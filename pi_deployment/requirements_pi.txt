@@ -1,0 +1,21 @@
+# Raspberry Pi 5 Deployment Dependencies
+# Install on Pi: pip install -r requirements_pi.txt
+
+# ML Inference (lightweight)
+ultralytics>=8.1.0
+
+# Drone Communication
+dronekit>=2.9.2
+pymavlink>=2.4.0
+
+# Camera & Image
+opencv-python-headless>=4.8.0    # Headless version (no GUI needed on Pi)
+numpy>=1.24.0
+Pillow>=10.0.0
+
+# Pi Camera (only needed if using Pi Camera Module)
+# Install separately: sudo apt install python3-picamera2
+# picamera2
+
+# Utilities
+pyyaml>=6.0
