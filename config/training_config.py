@@ -17,22 +17,23 @@ RUNS_DIR = os.path.join(PROJECT_ROOT, "runs")
 # ============================================================
 # MODEL
 # ============================================================
-MODEL_VARIANT = "yolov8n.pt"       # YOLOv8 Nano - best for Pi 5
+MODEL_VARIANT = "yolov8s.pt"       # YOLOv8 Small - better accuracy
 TARGET_CLASSES = [0]                # Class 0 = person/human
 CONFIDENCE_THRESHOLD = 0.5         # Minimum confidence for detection
 
 # ============================================================
 # TRAINING HYPERPARAMETERS
 # ============================================================
-EPOCHS = 50                        # Number of training epochs
-BATCH_SIZE = 4                     # Batch size (safe for RTX 3050 4GB)
-IMAGE_SIZE = 640                   # Input image resolution
+EPOCHS = 100                       # Number of training epochs
+BATCH_SIZE = 2                     # Batch size (for imgsz 1280 on RTX 3050 4GB)
+IMAGE_SIZE = 1280                  # Input image resolution (higher = better accuracy)
 DEVICE = 0                         # GPU device (0 = first GPU)
 WORKERS = 2                        # DataLoader workers
-PATIENCE = 10                      # Early stopping patience
+PATIENCE = 20                      # Early stopping patience (more room for improvement)
+FREEZE_LAYERS = 10                 # Freeze first N backbone layers (retains COCO knowledge for webcam)
 
 # Training name (used for saving runs)
-TRAINING_NAME = "disaster_rescue_detector"
+TRAINING_NAME = "disaster_rescue_detector_v2"
 
 # ============================================================
 # EXPORT (for Raspberry Pi 5)
@@ -49,10 +50,12 @@ WEBCAM_DISPLAY_HEIGHT = 720
 # ============================================================
 # HELPER: Get best model path
 # ============================================================
-def get_best_model_path():
+def get_best_model_path(version="v2"):
     """Returns the path to the best trained model weights."""
-    return os.path.join(RUNS_DIR, "detect", TRAINING_NAME, "weights", "best.pt")
+    name = "disaster_rescue_detector" if version == "v1" else TRAINING_NAME
+    return os.path.join(RUNS_DIR, "detect", name, "weights", "best.pt")
 
-def get_last_model_path():
+def get_last_model_path(version="v2"):
     """Returns the path to the last trained model weights."""
-    return os.path.join(RUNS_DIR, "detect", TRAINING_NAME, "weights", "last.pt")
+    name = "disaster_rescue_detector" if version == "v1" else TRAINING_NAME
+    return os.path.join(RUNS_DIR, "detect", name, "weights", "last.pt")

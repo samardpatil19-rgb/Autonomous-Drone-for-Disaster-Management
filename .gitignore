@@ -22,24 +22,45 @@ env/
 Thumbs.db
 .DS_Store
 
-# Training outputs (large files)
-runs/
-exported_models/
+# ── Datasets (too large for GitHub) ──
+datasets/
 dataset/
+data.yaml
+*.cache
 
-# Detection outputs
+# ── Raw model weight files (use Git LFS or releases for these) ──
+yolo26n.pt
+yolov8n.pt
+yolov8s.pt
+
+# ── Training runs to EXCLUDE ──
+# Exclude intermediate checkpoints (huge files)
+runs/detect/disaster_rescue_detector_v2/weights/epoch*.pt
+runs/detect/disaster_rescue_detector_v2/weights/last.pt
+# Exclude v1 and eval runs
+runs/detect/disaster_rescue_detector/
+runs/detect/disaster_rescue_detector_eval/
+runs/detect/disaster_rescue_detector_v2_eval/
+# Exclude empty predict folder
+runs/detect/predict/
+
+# ── KEEP these (tracked by git) ──
+# runs/detect/disaster_rescue_detector_v2/  (training plots, metrics, val images)
+# runs/detect/disaster_rescue_detector_v2/weights/best.pt  (best model)
+# runs/detect/disaster_rescue_detector_v2/weights/best.onnx  (ONNX export)
+# runs/detect/disaster_rescue_detector_v2/weights/best_ncnn_model/  (Pi deployment model)
+# runs/detect/predict2/  (test prediction results)
+
+# ── Detection outputs ──
 screenshots/
 detections/
 detection_log.csv
 
-# Kaggle
+# ── Kaggle ──
 .kaggle/
 
-# Model weights (too large for git)
-*.pt
-*.onnx
-*_ncnn_model/
+# ── Test images (large zip) ──
+Test images Phone/**/*.zip
 
-# Data
-data.yaml
-*.cache
+# ── Exported models (separate from runs) ──
+exported_models/

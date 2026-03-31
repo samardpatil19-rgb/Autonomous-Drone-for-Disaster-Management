@@ -38,16 +38,22 @@ MIN_DETECTION_COUNT = 2                   # Minimum consecutive detections to tr
                                           # (reduces false positives)
 
 # ============================================================
-# GPS REPORTING
+# VIDEO STREAMING (Flask server on the Pi)
 # ============================================================
-GPS_LOG_FILE = "detection_log.csv"        # CSV file for logging detections
-ENABLE_CONSOLE_ALERTS = True              # Print alerts to console
-ENABLE_CSV_LOGGING = True                 # Log detections to CSV
+STREAM_HOST = "0.0.0.0"                   # Bind to all interfaces
+STREAM_PORT = 5000                        # Access at http://<Pi_IP>:5000
+ENABLE_VIDEO_STREAM = True                # Enable live video feed
+
+# ============================================================
+# COMMUNICATIONS (Dual-channel alerts)
+# ============================================================
+ENABLE_MAVLINK_ALERTS = True              # Channel 1: MAVLink via telemetry radio
+ENABLE_HTTP_ALERTS = False                # Channel 2: HTTP via 4G/ZeroTier
+GROUND_STATION_URL = None                 # Set to http://<laptop_zerotier_ip>:8080/alert
+SAVE_DETECTION_IMAGES = True              # Save annotated frames to SD card
+DETECTION_IMAGES_DIR = "detections/"      # Directory for saved detection images
 
 # ============================================================
 # SYSTEM
 # ============================================================
 LOG_LEVEL = "INFO"                        # Logging level (DEBUG, INFO, WARNING, ERROR)
-DISPLAY_PREVIEW = False                   # Show camera preview (only if display connected)
-SAVE_DETECTION_IMAGES = True              # Save frames with detections
-DETECTION_IMAGES_DIR = "detections/"      # Directory for saved detection images

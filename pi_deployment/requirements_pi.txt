@@ -17,5 +17,9 @@ Pillow>=10.0.0
 # Install separately: sudo apt install python3-picamera2
 # picamera2
 
+# Video Streaming & HTTP Alerts
+flask>=3.0.0
+requests>=2.31.0
+
 # Utilities
 pyyaml>=6.0

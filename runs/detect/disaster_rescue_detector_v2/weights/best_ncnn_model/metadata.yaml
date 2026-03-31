@@ -1,0 +1,19 @@
+description: Ultralytics best model trained on C:\Projects\Drone Final Year Project\data.yaml
+author: Ultralytics
+date: '2026-03-16T17:28:43.975399'
+version: 8.4.16
+license: AGPL-3.0 License (https://ultralytics.com/license)
+docs: https://docs.ultralytics.com
+stride: 32
+task: detect
+batch: 1
+imgsz:
+- 1280
+- 1280
+names:
+  0: person
+args:
+  batch: 1
+  half: false
+channels: 3
+end2end: false
