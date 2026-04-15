@@ -92,7 +92,7 @@ This project implements an end-to-end autonomous drone-based survivor detection 
 
 | Metric | Score |
 |---|---|
-| **Precision** | **99.01%** |
+| **Precision** | **75.03%** |
 | **Recall** | **69.7%** |
 | **mAP@50** | **69.6%** |
 | **mAP@50-95** | **37.9%** |
